@@ -1,24 +1,20 @@
+import 'package:bitbust/src/components/components.dart';
+import 'package:bitbust/src/features/authentication/views/create_account_page.dart';
+import 'package:bitbust/src/features/authentication/views/login_page.dart';
+import 'package:bitbust/src/features/dashboard/views/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case SplashScreen.routeName:
-      //   return FadeRoute(page: const SplashScreen());
-      // case OnboardingScreen.routeName:
-      //   return ScaleRoute(page: const OnboardingScreen());
-      // case RegisterScreen.routeName:
-      //   return ScaleRoute(page: const RegisterScreen());
-      // case VerifyEmailScreen.routeName:
-      //   return ScaleRoute(page: VerifyEmailScreen(token: settings.arguments as String));
-      // case AboutYouScreen.routeName:
-      //   return ScaleRoute(page: const AboutYouScreen());
-      // case CompleteReg.routeName:
-      //   return ScaleRoute(page: CompleteReg(name: settings.arguments as String));
-      // case HomeScreen.routeName:
-      //   return ScaleRoute(page: const HomeScreen());
-      // case LoginScreen.routeName:
-      //   return SlideRightRoute(page: const LoginScreen());
+      case SplashScreen.routeName:
+        return FadeRoute(page: const SplashScreen());
+      case CreateAccountPage.routeName:
+        return ScaleRoute(page: const CreateAccountPage());
+      case DashboardPage.routeName:
+        return ScaleRoute(page: const DashboardPage());
+      case LoginPage.routeName:
+        return ScaleRoute(page: const LoginPage());
       // case RecoverPasswordPage.routeName:
       //   return FadeRoute(page: const RecoverPasswordPage());
       // case PinPage.routeName:
@@ -27,8 +23,8 @@ class AppRouter {
       //   return SizeRoute(page: const NewPasswordPage());
       // case VerifyIdentityPage.routeName:
       //   return FadeRoute(page: VerifyIdentityPage(email: settings.arguments as String));
-      // default:
-      //   return FadeRoute(page: const SplashScreen());
+      default:
+        return FadeRoute(page: const SplashScreen());
     }
   }
 }

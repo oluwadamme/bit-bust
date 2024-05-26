@@ -113,7 +113,7 @@ class Helpers {
     }
   }
 
-  static Widget svg(String asset, {Color color = AppColors.grey200, BoxFit fit = BoxFit.contain}) {
+  static Widget svg(String asset, {Color color = AppColors.greye8, BoxFit fit = BoxFit.contain}) {
     return SvgPicture.asset(
       asset,
       colorFilter: ColorFilter.mode(color, BlendMode.srcIn),

@@ -34,4 +34,12 @@ class DataStorage {
   Future<void> write(String key, String? value) async {
     await storage.write(key: key, value: value);
   }
+
+  Future<bool> isExists(String key) async {
+    final value = await read(key);
+    if (value == null || value == "null" || value.isEmpty) {
+      return false;
+    }
+    return true;
+  }
 }

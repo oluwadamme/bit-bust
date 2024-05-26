@@ -1,3 +1,4 @@
+import 'package:bitbust/src/components/components.dart';
 import 'package:bitbust/src/core/push_notification_service.dart';
 import 'package:bitbust/src/utils/utils.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -11,9 +12,10 @@ import 'firebase_options.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await dotenv.load();
+
   await PushNotificationService.registerNotification();
   await PushNotificationService.initializeLocalNotifications();
+  await dotenv.load();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   // Status bar config

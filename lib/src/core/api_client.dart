@@ -5,17 +5,9 @@ import 'dart:async';
 import 'package:bitbust/src/core/core.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 abstract class ApiClient {
-  late String accessToken;
-
-  bool showError = false;
-
-  ApiClient({
-    this.showError = true,
-    String? accessToken,
-  }) : accessToken = accessToken ?? "";
-
   // GET method
   Future<dynamic> get(String url, {Map<String, dynamic>? queries, Map<String, dynamic>? headers}) async {
     var responseJson;
@@ -54,6 +46,7 @@ abstract class ApiClient {
         url,
         data: data,
         queryParameters: query,
+        options: options,
       );
 
       responseJson = _returnResponse(response);
@@ -63,7 +56,7 @@ abstract class ApiClient {
     return responseJson;
   }
 
-  dynamic _returnResponse(Response response) {
+  dynamic _returnResponse(Response response) async {
     try {
       if (!isResponseOk(response.statusCode!)) {
         throw processError(response);
@@ -74,13 +67,7 @@ abstract class ApiClient {
         throw processError(response);
       }
     } on DioException catch (e) {
-      final msg = DataException.fromDioError(e);
-
-      if (e.response == null || e.response!.data == null) {
-        throw Exception(msg.message);
-      } else {
-        throw processError(e.response!);
-      }
+      await _errorParsing(e);
     }
   }
 
@@ -104,7 +91,7 @@ abstract class ApiClient {
           response.data["error_description"] ??
           response.data["error"] ??
           response.data["status"] ??
-          "Server error. Please contact support for help.";
+          "Server error. Please contact support";
     }
   }
 
@@ -112,7 +99,7 @@ abstract class ApiClient {
   Dio _getDio() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: Endpoints.baseUrl,
+        baseUrl: dotenv.env['BASE_URL'] ?? "",
         connectTimeout: const Duration(seconds: 120),
         receiveTimeout: const Duration(seconds: 120),
       ),
@@ -123,7 +110,9 @@ abstract class ApiClient {
         LogInterceptor(requestBody: true, responseBody: true),
       ]);
     } else {
-      dio.interceptors.addAll([AuthInterceptor()]);
+      dio.interceptors.addAll([
+        AuthInterceptor(),
+      ]);
     }
     return dio;
   }

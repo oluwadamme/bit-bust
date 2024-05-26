@@ -23,7 +23,7 @@ class DataException implements Exception {
         message = dioError.message ?? kErrorSendTimeout;
         break;
       default:
-        message = dioError.message ?? kErrorInternetConnection;
+        message = kErrorInternetConnection;
         return;
     }
   }

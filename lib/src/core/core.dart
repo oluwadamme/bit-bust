@@ -1,5 +1,5 @@
 export './api_client.dart';
-export 'endpoints.dart';
+export './endpoints.dart';
 export './request_res.dart';
 export './data_exception.dart';
 export './data_storage.dart';

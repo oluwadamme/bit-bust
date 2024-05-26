@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 TextStyle blackStyle(
   double size,
@@ -14,7 +15,7 @@ TextStyle blackStyle(
     letterSpacing: letterSpacing,
     height: 1.3,
     decoration: decoration,
-    fontFamily: family ?? "SF-Pro",
+    fontFamily: family ?? GoogleFonts.outfit().fontFamily,
   );
 }
 
@@ -32,7 +33,7 @@ TextStyle boldStyle(
     letterSpacing: letterSpacing,
     height: 1.3,
     decoration: decoration,
-    fontFamily: family ?? "SF-Pro",
+    fontFamily: family ?? GoogleFonts.outfit().fontFamily,
   );
 }
 
@@ -50,7 +51,7 @@ TextStyle semiBoldStyle(
     letterSpacing: letterSpacing,
     height: 1.3,
     decoration: decoration,
-    fontFamily: family ?? "SF-Pro",
+    fontFamily: family ?? GoogleFonts.outfit().fontFamily,
   );
 }
 
@@ -68,7 +69,7 @@ TextStyle mediumStyle(
     letterSpacing: letterSpacing,
     height: 1.4,
     decoration: decoration,
-    fontFamily: family ?? "SF-Pro",
+    fontFamily: family ?? GoogleFonts.outfit().fontFamily,
   );
 }
 
@@ -86,7 +87,7 @@ TextStyle normalStyle(
     letterSpacing: letterSpacing,
     height: 1.4,
     decoration: decoration,
-    fontFamily: family ?? "SF-Pro",
+    fontFamily: family ?? GoogleFonts.outfit().fontFamily,
   );
 }
 
@@ -104,7 +105,7 @@ TextStyle lightStyle(
     letterSpacing: letterSpacing,
     height: 1.3,
     decoration: decoration,
-    fontFamily: family ?? "SF-Pro",
+    fontFamily: family ?? GoogleFonts.outfit().fontFamily,
   );
 }
 
@@ -124,6 +125,6 @@ TextStyle italicStyle(
     letterSpacing: letterSpacing,
     height: 1.3,
     decoration: decoration,
-    fontFamily: family ?? "SF-Pro",
+    fontFamily: family ?? GoogleFonts.outfit().fontFamily,
   );
 }
