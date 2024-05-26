@@ -13,6 +13,9 @@ class ThemeConfig {
     ),
     appBarTheme: const AppBarTheme(backgroundColor: Colors.white, elevation: 0),
     fontFamily: GoogleFonts.outfit().fontFamily,
+    splashColor: Colors.transparent,
+    splashFactory: NoSplash.splashFactory,
+    highlightColor: Colors.transparent,
     inputDecorationTheme: InputDecorationTheme(
       enabledBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: AppColors.greyF0, width: 0),
