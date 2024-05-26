@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "511839260223",
+    "project_id": "bitbust-efe43",
+    "storage_bucket": "bitbust-efe43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511839260223:android:770ae2432c646b2fbfb28a",
+        "android_client_info": {
+          "package_name": "com.example.bitbust"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7W0_chFNsrjnS7aIGsYIAomBsk70pZM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
