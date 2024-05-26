@@ -134,8 +134,8 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
                   if (value == null || value.trim().isEmpty) {
                     return "Password cannot be empty";
                   }
-                  if (value.length < 7) {
-                    return "Password is not valid";
+                  if (!value.isValidPassword()) {
+                    return "Password Must be more than 8 characters and contain at least one capital letter, one number and one special character";
                   }
                   return null;
                 },
@@ -156,8 +156,8 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
                   if (value == null || value.trim().isEmpty) {
                     return "Confirm Password cannot be empty";
                   }
-                  if (value.length < 7) {
-                    return "Confirm Password is not valid";
+                  if (!value.isValidPassword()) {
+                    return "Password Must be more than 8 characters and contain at least one capital letter, one number and one special character";
                   }
                   if (value != passwordController.text.trim()) {
                     return "Passwords do not match";

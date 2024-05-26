@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'bitbust-efe43.appspot.com',
     iosBundleId: 'com.example.bitbust',
   );
+
 }

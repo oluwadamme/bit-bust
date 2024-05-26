@@ -22,7 +22,7 @@ class ToastUtil {
         children: [
           Text(
             message,
-            style: mediumStyle(14, AppColors.grey900),
+            style: mediumStyle(14, AppColors.greyF2),
           ),
         ],
       ),

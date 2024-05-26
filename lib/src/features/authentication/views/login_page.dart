@@ -1,4 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bitbust/src/components/components.dart';
+import 'package:bitbust/src/core/data_storage.dart';
 import 'package:bitbust/src/features/authentication/data/controllers/login_controller.dart';
 import 'package:bitbust/src/features/authentication/data/repository/auth_repository.dart';
 import 'package:bitbust/src/features/authentication/views/create_account_page.dart';
@@ -20,6 +23,16 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (await ref.read(dataStorageProvider).isExists(Constants.email)) {
+        emailController.text = (await ref.read(dataStorageProvider).read(Constants.email))!;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final obscured = useState(true);
@@ -83,15 +96,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   text: "Login",
                   loading: ref.watch(loginProvider).loading,
                   function: () async {
-                    Navigator.pushReplacementNamed(context, DashboardPage.routeName);
-                    // if (formKey.currentState!.validate()) {
-                    //   await ref
-                    //       .read(loginProvider.notifier)
-                    //       .login(email: emailController.text, password: passwordController.text);
-                    //   if (ref.read(loginProvider).success != null) {
-
-                    //   }
-                    // }
+                    Helpers.closeKeyboard(context);
+                    if (formKey.currentState!.validate()) {
+                      await ref
+                          .read(loginProvider.notifier)
+                          .login(email: emailController.text, password: passwordController.text);
+                      if (ref.read(loginProvider).success != null) {
+                        Navigator.pushNamed(context, DashboardPage.routeName);
+                      }
+                    }
                   },
                   width: 287,
                 ),

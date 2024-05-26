@@ -40,4 +40,17 @@ class AuthRepository extends ApiClient {
       return RequestRes(error: ErrorRes(message: e.toString()));
     }
   }
+
+  Future<RequestRes> verifyOTP(String email, String otp) async {
+    try {
+      final response = await post(
+        Endpoints.verifyOTP,
+        data: {"email": email, "otp": otp},
+      );
+
+      return RequestRes(response: response['data']['token']);
+    } catch (e) {
+      return RequestRes(error: ErrorRes(message: e.toString()));
+    }
+  }
 }

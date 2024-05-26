@@ -1,4 +1,5 @@
 import 'package:bitbust/main.dart';
+import 'package:bitbust/src/core/data_storage.dart';
 import 'package:bitbust/src/features/authentication/data/controllers/states/sign_up_state.dart';
 import 'package:bitbust/src/features/authentication/data/model/sign_up_request.dart';
 import 'package:bitbust/src/features/authentication/data/repository/auth_repository.dart';
@@ -20,6 +21,7 @@ class SignUpNotifier extends StateNotifier<SignUpState> {
         ToastUtil.showErrorToast(navigatorKey.currentContext!, resp.error!.message);
         state = SignUpState(error: resp.error!.message);
       } else {
+        await _ref.read(dataStorageProvider).write(Constants.email, request.email);
         state = SignUpState(success: resp.response);
       }
     } catch (e) {

@@ -7,6 +7,12 @@ extension EmailValidator on String {
     ).hasMatch(this);
   }
 
+  bool isValidPassword() {
+    return RegExp(
+      r'^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+{};:"<>,./?]).{8,}$',
+    ).hasMatch(this);
+  }
+
   double toDouble() {
     final double? val = double.tryParse(replaceAll(",", ""));
     return val ?? 0;
