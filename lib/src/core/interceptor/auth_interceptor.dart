@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:bitbust/src/core/core.dart';
 import 'package:bitbust/src/utils/utils.dart';
@@ -31,11 +32,31 @@ class AuthInterceptor extends QueuedInterceptor {
 
     debugPrint("READ - reading token from cache");
     token = await _dataStorage.read(Constants.token) ?? "";
-    options.headers.addAll({
-      'Content-type': 'application/json',
-      "Accept": "application/json",
-      'Authorization': "Bearer $token",
-    });
+    final data = (options.data as Map<String, dynamic>);
+    FormData formData = FormData();
+
+    if (data.values.any((element) => element.runtimeType is File)) {
+      for (var element in data.entries) {
+        if (element.value is File) {
+          formData.files.add(MapEntry(element.key,
+              MultipartFile.fromFileSync(element.value.path, filename: element.value.path.toString().split("/").last)));
+        } else {
+          formData.fields.add(MapEntry(element.key, element.value));
+        }
+      }
+      options.headers.addAll({
+        'Content-type': "multipart/form-data",
+        "Accept": "application/json",
+        'Authorization': "Bearer $token",
+      });
+      options.data = formData;
+    } else {
+      options.headers.addAll({
+        'Content-type': 'application/json',
+        "Accept": "application/json",
+        'Authorization': "Bearer $token",
+      });
+    }
 
     return handler.next(options);
   }
