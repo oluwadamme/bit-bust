@@ -1,13 +1,32 @@
 {
   "project_info": {
-    "project_number": "511839260223",
-    "project_id": "bitbust-efe43",
-    "storage_bucket": "bitbust-efe43.appspot.com"
+    "project_number": "961474201014",
+    "project_id": "bitbust-ea563",
+    "storage_bucket": "bitbust-ea563.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:511839260223:android:770ae2432c646b2fbfb28a",
+        "mobilesdk_app_id": "1:961474201014:android:6dc61fc6bab05216a1ad17",
+        "android_client_info": {
+          "package_name": "com.app.bitbust.bitbust"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA319sQE7XqpzKWELm1lMn-yUN28rWeX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961474201014:android:67bca06ab8f7312aa1ad17",
         "android_client_info": {
           "package_name": "com.example.bitbust"
         }
@@ -15,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD7W0_chFNsrjnS7aIGsYIAomBsk70pZM0"
+          "current_key": "AIzaSyBA319sQE7XqpzKWELm1lMn-yUN28rWeX0"
         }
       ],
       "services": {

@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBR2Ku-2w5x-Qpxyp-I59KqRdr-dBheeAE</string>
+	<string>AIzaSyB3G4G3ekiuG2neeLuG8tEcKqAxJtw7oN4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>511839260223</string>
+	<string>961474201014</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.bitbust</string>
 	<key>PROJECT_ID</key>
-	<string>bitbust-efe43</string>
+	<string>bitbust-ea563</string>
 	<key>STORAGE_BUCKET</key>
-	<string>bitbust-efe43.appspot.com</string>
+	<string>bitbust-ea563.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:511839260223:ios:7475d35dfe864966bfb28a</string>
+	<string>1:961474201014:ios:0b6098229e6b01d7a1ad17</string>
 </dict>
 </plist>

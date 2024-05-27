@@ -130,7 +130,37 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 ),
               ),
               YMargin(screenHeight(context, percent: .15)),
-              GestureDetector(onTap: () {}, child: Center(child: SvgPicture.asset(AppAsset.fingerprint)))
+              GestureDetector(
+                onTap: () async {
+                  final isPasswordExist = await ref.read(dataStorageProvider).isExists(Constants.password);
+                  final isEmailExist = await ref.read(dataStorageProvider).isExists(Constants.email);
+                  if (!isPasswordExist || !isEmailExist) {
+                    if (context.mounted) {
+                      ToastUtil.showErrorToast(
+                        context,
+                        "Biometric is not setup on this device. please login to continue",
+                      );
+                    }
+                    return;
+                  }
+                  final value = await ref.read(loginProvider.notifier).setupBiometric();
+                  if (value) {
+                    final password = await ref.read(dataStorageProvider).read(Constants.password);
+                    final email = await ref.read(dataStorageProvider).read(Constants.email);
+                    setState(() {
+                      emailController.text = email!;
+                      passwordController.text = password!;
+                    });
+                    await ref
+                        .read(loginProvider.notifier)
+                        .login(email: emailController.text, password: passwordController.text);
+                    if (ref.read(loginProvider).success != null) {
+                      Navigator.pushNamed(context, DashboardPage.routeName);
+                    }
+                  }
+                },
+                child: Center(child: SvgPicture.asset(AppAsset.fingerprint)),
+              )
             ],
           ),
         ),

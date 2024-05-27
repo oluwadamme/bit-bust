@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD7W0_chFNsrjnS7aIGsYIAomBsk70pZM0',
-    appId: '1:511839260223:android:770ae2432c646b2fbfb28a',
-    messagingSenderId: '511839260223',
-    projectId: 'bitbust-efe43',
-    storageBucket: 'bitbust-efe43.appspot.com',
+    apiKey: 'AIzaSyBA319sQE7XqpzKWELm1lMn-yUN28rWeX0',
+    appId: '1:961474201014:android:67bca06ab8f7312aa1ad17',
+    messagingSenderId: '961474201014',
+    projectId: 'bitbust-ea563',
+    storageBucket: 'bitbust-ea563.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBR2Ku-2w5x-Qpxyp-I59KqRdr-dBheeAE',
-    appId: '1:511839260223:ios:7475d35dfe864966bfb28a',
-    messagingSenderId: '511839260223',
-    projectId: 'bitbust-efe43',
-    storageBucket: 'bitbust-efe43.appspot.com',
+    apiKey: 'AIzaSyB3G4G3ekiuG2neeLuG8tEcKqAxJtw7oN4',
+    appId: '1:961474201014:ios:0b6098229e6b01d7a1ad17',
+    messagingSenderId: '961474201014',
+    projectId: 'bitbust-ea563',
+    storageBucket: 'bitbust-ea563.appspot.com',
     iosBundleId: 'com.example.bitbust',
   );
 
