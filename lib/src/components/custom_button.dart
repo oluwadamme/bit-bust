@@ -20,8 +20,8 @@ class CustomButton extends StatelessWidget {
     return TextButton(
       onPressed: disabled || loading ? null : function,
       style: TextButton.styleFrom(
-        backgroundColor: AppColors.grey900.withOpacity(disabled ? 0.7 : 1),
-        fixedSize: Size(width ?? screenWidth(context), 56),
+        backgroundColor: AppColors.grey900.withOpacity(disabled || loading ? 0.7 : 1),
+        fixedSize: Size(width ?? screenWidth(context), 64),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),

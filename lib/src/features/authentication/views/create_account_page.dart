@@ -69,8 +69,8 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
               InputField(
                 controller: lastNameController,
                 hint: "Last Name",
-                keyboardType: TextInputType.name,
                 prefixIcon: SvgPicture.asset(AppAsset.profile, fit: BoxFit.scaleDown),
+                keyboardType: TextInputType.name,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
                     return "Last name cannot be empty";

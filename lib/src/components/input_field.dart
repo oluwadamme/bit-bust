@@ -30,30 +30,43 @@ class InputField extends StatelessWidget {
   final void Function(String)? onChanged;
   final bool enabled;
   final TextAlign? textAlign;
+
   final TextStyle? textStyle;
   final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      style: textStyle ?? mediumStyle(16, AppColors.grey900),
-      textAlign: textAlign ?? TextAlign.start,
-      keyboardType: keyboardType,
-      validator: validator,
-      onChanged: onChanged,
-      decoration: InputDecoration(
-        hintText: hint,
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
-      ),
-      textCapitalization: TextCapitalization.sentences,
-      cursorColor: AppColors.grey900,
-      cursorWidth: 1,
-      inputFormatters: inputFormatters,
-      obscureText: onbscureText,
-      obscuringCharacter: "•",
-      enabled: enabled,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (label != null && label!.isNotEmpty)
+          Text(
+            label!,
+            style: mediumStyle(12, AppColors.grey29),
+          ),
+        if (label != null && label!.isNotEmpty) const YMargin(5),
+        TextFormField(
+          controller: controller,
+          style: textStyle ?? mediumStyle(16, AppColors.grey900),
+          textAlign: textAlign ?? TextAlign.start,
+          keyboardType: keyboardType,
+          validator: validator,
+          onChanged: onChanged,
+          decoration: InputDecoration(
+            hintText: hint ?? label,
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+          ),
+          textCapitalization: TextCapitalization.sentences,
+          cursorColor: AppColors.grey900,
+          cursorWidth: 1,
+          inputFormatters: inputFormatters,
+          obscureText: onbscureText,
+          obscuringCharacter: "•",
+          enabled: enabled,
+        ),
+      ],
     );
   }
 }

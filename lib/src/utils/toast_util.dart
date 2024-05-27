@@ -10,7 +10,7 @@ class ToastUtil {
       flushbarStyle: FlushbarStyle.FLOATING,
       reverseAnimationCurve: Curves.decelerate,
       forwardAnimationCurve: Curves.elasticIn,
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: Colors.green,
       duration: const Duration(seconds: 5),
       icon: const Icon(
         Icons.check_circle,

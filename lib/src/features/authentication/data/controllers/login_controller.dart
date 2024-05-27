@@ -42,6 +42,7 @@ class LoginNotifier extends StateNotifier<LoginState> {
       } else {
         await _ref.read(dataStorageProvider).write(Constants.token, resp.response);
         await _ref.read(userProfileProvider.notifier).getProfile();
+        await _ref.read(dataStorageProvider).write(Constants.email, email);
         state = LoginState(success: resp.response);
       }
     } catch (e) {
