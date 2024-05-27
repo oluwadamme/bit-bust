@@ -4,7 +4,6 @@ import 'package:bitbust/src/core/core.dart';
 import 'package:bitbust/src/features/profile/data/model/change_password_request.dart';
 import 'package:bitbust/src/features/profile/data/model/update_profile_request.dart';
 import 'package:bitbust/src/features/profile/data/model/user_profile_info.dart';
-import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final profileRepoProvider = Provider<ProfileRepository>((ref) {

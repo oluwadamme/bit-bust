@@ -8,9 +8,11 @@ import 'package:bitbust/src/core/data_storage.dart';
 import 'package:bitbust/src/features/authentication/views/login_page.dart';
 import 'package:bitbust/src/features/profile/data/controller/update_user_profile.dart';
 import 'package:bitbust/src/features/profile/data/controller/user_profile_controller.dart';
+import 'package:bitbust/src/features/profile/data/model/user_profile_info.dart';
 import 'package:bitbust/src/features/profile/views/complete_profile.dart';
 import 'package:bitbust/src/features/profile/views/security_page.dart';
 import 'package:bitbust/src/features/profile/views/widgets/profile_item.dart';
+import 'package:bitbust/src/features/profile/views/widgets/profile_picture.dart';
 import 'package:bitbust/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -42,23 +44,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               children: [
                 Row(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.blueF0,
-                        shape: BoxShape.circle,
-                        image: user == null || user.profileImage == null
-                            ? null
-                            : DecorationImage(image: NetworkImage(user.profileImage!), fit: BoxFit.fill),
-                      ),
-                      width: 100,
-                      height: 100,
-                      child: ref.watch(updateUserProfileProvider).loading
-                          ? const Center(
-                              child: SizedBox(height: 30, width: 30, child: CircularProgressIndicator.adaptive()))
-                          : user == null || user.profileImage == null
-                              ? const Center(child: LogoText(fontSize: 16, color: AppColors.grey900))
-                              : null,
-                    ),
+                    const ProfilePicture(),
                     XMargin(screenWidth(context, percent: .2)),
                     GestureDetector(
                       onTap: () {
