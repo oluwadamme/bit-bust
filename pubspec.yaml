@@ -23,7 +23,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  intl: ^0.19.0
+  intl: 
   another_flushbar: ^1.12.30
   flutter_svg: ^2.0.9
   dio: ^5.4.1
@@ -32,9 +32,9 @@ dependencies:
   skeletonizer: 
   flutter_secure_storage: 
   flutter_dotenv: ^5.1.0
-  awesome_notifications: ^0.9.3+1
+  awesome_notifications: ^0.8.2
   google_fonts: 6.1.0
-  local_auth: 
+  local_auth: any
 
   # State management
   flutter_hooks: ^0.20.3
