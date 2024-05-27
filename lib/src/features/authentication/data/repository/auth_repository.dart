@@ -32,7 +32,11 @@ class AuthRepository extends ApiClient {
     try {
       final response = await post(
         Endpoints.login,
-        data: {"email": email, "password": password},
+        data: {
+          "email": email,
+          "password": password,
+          "phone_token": PushNotificationService.token,
+        },
       );
 
       return RequestRes(response: response['data']);

@@ -29,6 +29,15 @@ class PushNotificationService {
       setToken(token!);
 
       // Subscribe to topics
+      for (final topic in ['general', 'global-bitbust']) {
+        Helpers.logc('topic subscribing... $topic');
+
+        try {
+          await _fcm.subscribeToTopic(topic).then((value) => Helpers.logc('topic subscribed: $topic'));
+        } catch (e) {
+          Helpers.logc('subscription error: $e');
+        }
+      }
       await topicSubscriber();
     } else {
       Helpers.logc('User declined or has not accepted permission');
@@ -72,6 +81,7 @@ class PushNotificationService {
   static Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     // If you're going to use other Firebase services in the background, such as Firestore,
     // make sure you call `initializeApp` before using other Firebase services.
+    Helpers.logc('notification data : ${message.toMap()}');
     await Firebase.initializeApp();
     bool isAllowed = await AwesomeNotifications().isNotificationAllowed();
     if (!isAllowed) {

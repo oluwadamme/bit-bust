@@ -32,24 +32,13 @@ class AuthInterceptor extends QueuedInterceptor {
 
     debugPrint("READ - reading token from cache");
     token = await _dataStorage.read(Constants.token) ?? "";
-    final data = (options.data as Map<String, dynamic>);
-    FormData formData = FormData();
-
-    if (data.values.any((element) => element.runtimeType is File)) {
-      for (var element in data.entries) {
-        if (element.value is File) {
-          formData.files.add(MapEntry(element.key,
-              MultipartFile.fromFileSync(element.value.path, filename: element.value.path.toString().split("/").last)));
-        } else {
-          formData.fields.add(MapEntry(element.key, element.value));
-        }
-      }
+    Helpers.logc(options.data is FormData);
+    if (options.data is FormData) {
       options.headers.addAll({
-        'Content-type': "multipart/form-data",
+        "content-type": "multipart/form-data",
         "Accept": "application/json",
         'Authorization': "Bearer $token",
       });
-      options.data = formData;
     } else {
       options.headers.addAll({
         'Content-type': 'application/json',

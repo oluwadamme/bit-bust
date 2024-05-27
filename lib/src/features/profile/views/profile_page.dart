@@ -3,7 +3,6 @@
 import 'dart:io';
 
 import 'package:bitbust/main.dart';
-import 'package:bitbust/src/components/bold_header.dart';
 import 'package:bitbust/src/components/components.dart';
 import 'package:bitbust/src/core/data_storage.dart';
 import 'package:bitbust/src/features/authentication/views/login_page.dart';
@@ -13,10 +12,10 @@ import 'package:bitbust/src/features/profile/views/complete_profile.dart';
 import 'package:bitbust/src/features/profile/views/security_page.dart';
 import 'package:bitbust/src/features/profile/views/widgets/profile_item.dart';
 import 'package:bitbust/src/utils/utils.dart';
-import 'package:cross_file/src/types/interface.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulHookConsumerWidget {
   const ProfilePage({super.key});
@@ -54,9 +53,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       width: 100,
                       height: 100,
                       child: ref.watch(updateUserProfileProvider).loading
-                          ? const SizedBox(height: 30, width: 30, child: CircularProgressIndicator.adaptive())
+                          ? const Center(
+                              child: SizedBox(height: 30, width: 30, child: CircularProgressIndicator.adaptive()))
                           : user == null || user.profileImage == null
-                              ? const LogoText()
+                              ? const Center(child: LogoText(fontSize: 16, color: AppColors.grey900))
                               : null,
                     ),
                     XMargin(screenWidth(context, percent: .2)),
@@ -73,6 +73,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                           backgroundColor: Colors.white,
                           builder: (context) {
                             return Column(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 ListTile(
                                   onTap: () async {
@@ -160,7 +161,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   Future<void> uploadPhoto(XFile image, BuildContext context) async {
     await ref.read(updateUserProfileProvider.notifier).updateProfilePicture(File(image.path));
     if (ref.read(updateUserProfileProvider).data != null) {
-      Navigator.pop(context);
       ToastUtil.showSuccessToast(navigatorKey.currentContext ?? context, ref.read(updateUserProfileProvider).data!);
     }
   }

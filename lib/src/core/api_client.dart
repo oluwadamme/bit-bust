@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bitbust/src/core/core.dart';
+import 'package:bitbust/src/utils/utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -47,6 +49,34 @@ abstract class ApiClient {
         data: data,
         queryParameters: query,
         options: options,
+      );
+
+      responseJson = _returnResponse(response);
+    } on DioException catch (e) {
+      await _errorParsing(e);
+    }
+    return responseJson;
+  }
+
+  Future<dynamic> upload(
+    String url, {
+    required Map<String, dynamic> data,
+  }) async {
+    var responseJson;
+
+    FormData formData = FormData();
+    for (var element in data.entries) {
+      if (element.value is File) {
+        formData.files.add(MapEntry(element.key,
+            MultipartFile.fromFileSync(element.value.path, filename: element.value.path.toString().split("/").last)));
+      } else {
+        formData.fields.add(MapEntry(element.key, element.value));
+      }
+    }
+    try {
+      final response = await _getDio().post(
+        url,
+        data: formData,
       );
 
       responseJson = _returnResponse(response);
