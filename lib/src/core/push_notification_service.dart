@@ -86,8 +86,6 @@ class PushNotificationService {
         body: message.notification?.body,
         payload: Map.from(message.data),
         criticalAlert: true,
-        duration: (message.notification?.body ?? "").contains("new order") ? const Duration(minutes: 2) : null,
-        customSound: "resource://raw/res_audio",
         wakeUpScreen: true,
         category: NotificationCategory.Call,
       ),

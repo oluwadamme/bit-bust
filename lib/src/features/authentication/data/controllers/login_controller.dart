@@ -25,6 +25,8 @@ class LoginNotifier extends StateNotifier<LoginState> {
         state = LoginState(error: resp.error!.message);
       } else {
         await verifyOTP(email: email);
+
+        await _ref.read(dataStorageProvider).write(Constants.password, password);
       }
     } catch (e) {
       Helpers.logc(e, error: true);
