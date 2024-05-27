@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:bitbust/main.dart';
-import 'package:bitbust/src/components/bold_header.dart';
 import 'package:bitbust/src/components/components.dart';
 import 'package:bitbust/src/features/profile/data/controller/update_user_profile.dart';
 import 'package:bitbust/src/features/profile/data/controller/user_profile_controller.dart';

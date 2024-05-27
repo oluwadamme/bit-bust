@@ -1,14 +1,11 @@
 // ignore_for_file: deprecated_member_use
 
 import 'dart:developer' as dev;
-import 'dart:io';
 import 'package:bitbust/src/utils/utils.dart';
-import 'package:dio/dio.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Key;
 import 'package:flutter/services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 

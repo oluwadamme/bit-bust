@@ -2,7 +2,6 @@
 
 import 'package:bitbust/main.dart';
 import 'package:bitbust/src/components/components.dart';
-import 'package:bitbust/src/components/custom_button.dart';
 import 'package:bitbust/src/core/core.dart';
 import 'package:bitbust/src/features/authentication/data/controllers/sign_up_controller.dart';
 import 'package:bitbust/src/features/authentication/data/model/sign_up_request.dart';

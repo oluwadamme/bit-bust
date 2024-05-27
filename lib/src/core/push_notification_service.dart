@@ -4,8 +4,6 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:bitbust/src/utils/utils.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 class PushNotificationService {

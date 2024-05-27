@@ -3,7 +3,6 @@
 import 'package:bitbust/src/components/components.dart';
 import 'package:bitbust/src/core/data_storage.dart';
 import 'package:bitbust/src/features/authentication/data/controllers/login_controller.dart';
-import 'package:bitbust/src/features/authentication/data/repository/auth_repository.dart';
 import 'package:bitbust/src/features/authentication/views/create_account_page.dart';
 import 'package:bitbust/src/features/dashboard/views/dashboard.dart';
 import 'package:bitbust/src/utils/utils.dart';

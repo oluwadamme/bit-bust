@@ -4,7 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 
 SignUpRequest signUpRequestFromJson(String str) => SignUpRequest.fromJson(json.decode(str));
 

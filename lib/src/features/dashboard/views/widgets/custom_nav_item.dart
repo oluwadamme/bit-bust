@@ -1,6 +1,5 @@
 import 'package:bitbust/src/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 BottomNavigationBarItem customNavItem(String asset) {
   return BottomNavigationBarItem(

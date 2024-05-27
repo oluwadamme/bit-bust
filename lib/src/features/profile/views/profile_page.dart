@@ -2,7 +2,6 @@ import 'package:bitbust/src/components/bold_header.dart';
 import 'package:bitbust/src/core/data_storage.dart';
 import 'package:bitbust/src/features/authentication/views/login_page.dart';
 import 'package:bitbust/src/features/profile/data/controller/user_profile_controller.dart';
-import 'package:bitbust/src/features/profile/data/repository/profile_repository.dart';
 import 'package:bitbust/src/features/profile/views/complete_profile.dart';
 import 'package:bitbust/src/features/profile/views/security_page.dart';
 import 'package:bitbust/src/features/profile/views/widgets/profile_item.dart';

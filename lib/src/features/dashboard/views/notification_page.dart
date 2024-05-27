@@ -1,9 +1,6 @@
-import 'package:bitbust/src/components/bold_header.dart';
 import 'package:bitbust/src/components/components.dart';
-import 'package:bitbust/src/utils/app_color.dart';
 import 'package:bitbust/src/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
