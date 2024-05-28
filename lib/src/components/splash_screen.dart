@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   final hive = DataStorage();
   void navigate() async {
-    if (await hive.isExists(Constants.token)) {
+    if (await hive.isExists(Constants.email)) {
       Navigator.pushReplacementNamed(context, LoginPage.routeName);
     } else {
       Navigator.pushReplacementNamed(context, CreateAccountPage.routeName);

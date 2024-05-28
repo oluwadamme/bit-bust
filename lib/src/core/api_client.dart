@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bitbust/src/core/core.dart';
-import 'package:bitbust/src/utils/utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

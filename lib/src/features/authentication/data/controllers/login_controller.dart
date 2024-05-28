@@ -70,6 +70,7 @@ class LoginNotifier extends StateNotifier<LoginState> {
       }
       return false;
     } on PlatformException catch (e) {
+      Helpers.logc(e);
       ToastUtil.showErrorToast(navigatorKey.currentContext!, e.message ?? e.details ?? "Cannot validate biometric");
       return false;
     }

@@ -1,6 +1,7 @@
 import 'package:bitbust/src/components/components.dart';
 import 'package:bitbust/src/features/dashboard/views/notification_page.dart';
 import 'package:bitbust/src/features/profile/data/controller/user_profile_controller.dart';
+import 'package:bitbust/src/features/profile/views/widgets/profile_picture.dart';
 import 'package:bitbust/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,7 +39,7 @@ class Homepage extends HookConsumerWidget {
             child: SvgPicture.asset(AppAsset.notification),
           ),
           const XMargin(5),
-          const CircleAvatar(radius: 12, backgroundColor: Colors.black),
+          const ProfilePicture(radius: 12),
           const XMargin(15),
         ],
       ),
