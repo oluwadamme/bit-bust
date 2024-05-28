@@ -4,6 +4,7 @@ import 'package:bitbust/src/components/components.dart';
 import 'package:bitbust/src/core/data_storage.dart';
 import 'package:bitbust/src/features/authentication/data/controllers/login_controller.dart';
 import 'package:bitbust/src/features/authentication/views/create_account_page.dart';
+import 'package:bitbust/src/features/dashboard/data/controllers/nav_controller.dart';
 import 'package:bitbust/src/features/dashboard/views/dashboard.dart';
 import 'package:bitbust/src/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -97,12 +98,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   function: () async {
                     Helpers.closeKeyboard(context);
                     if (formKey.currentState!.validate()) {
-                      await ref
-                          .read(loginProvider.notifier)
-                          .login(email: emailController.text, password: passwordController.text);
-                      if (ref.read(loginProvider).success != null) {
-                        Navigator.pushNamed(context, DashboardPage.routeName);
-                      }
+                      await _login(context);
                     }
                   },
                   width: 287,
@@ -151,12 +147,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       emailController.text = email!;
                       passwordController.text = password!;
                     });
-                    await ref
-                        .read(loginProvider.notifier)
-                        .login(email: emailController.text, password: passwordController.text);
-                    if (ref.read(loginProvider).success != null) {
-                      Navigator.pushNamed(context, DashboardPage.routeName);
-                    }
+                    await _login(context);
                   }
                 },
                 child: Center(child: SvgPicture.asset(AppAsset.fingerprint)),
@@ -166,5 +157,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         ),
       ),
     );
+  }
+
+  Future<void> _login(BuildContext context) async {
+    await ref.read(loginProvider.notifier).login(email: emailController.text, password: passwordController.text);
+    if (ref.read(loginProvider).success != null) {
+      ref.read(dashNavProvider.notifier).updatePage(0);
+      Navigator.pushNamed(context, DashboardPage.routeName);
+    }
   }
 }
