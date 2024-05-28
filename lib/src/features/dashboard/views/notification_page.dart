@@ -1,4 +1,5 @@
 import 'package:bitbust/src/components/components.dart';
+import 'package:bitbust/src/features/dashboard/data/controllers/notification_controller.dart';
 import 'package:bitbust/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -12,6 +13,14 @@ class NotificationPage extends StatefulHookConsumerWidget {
 }
 
 class _NotificationPageState extends ConsumerState<NotificationPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(notificationProvider.notifier).fetchAllNotifications();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,14 +51,30 @@ class _NotificationPageState extends ConsumerState<NotificationPage> {
             ),
           ),
           const YMargin(10),
-          Expanded(
-            child: ListView.separated(
+          HookConsumer(builder: (context, ref, child) {
+            if (ref.watch(notificationProvider).loading) {
+              return const Center(
+                child: SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: CircularProgressIndicator.adaptive(),
+                ),
+              );
+            }
+            if (ref.watch(notificationProvider).data.isEmpty) {
+              return const SizedBox(
+                height: 200,
+                child: Center(child: Text("No Notification yet")),
+              );
+            }
+            return Expanded(
+              child: ListView.separated(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 itemBuilder: (context, index) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      BoldHeader(text: "${index + 1}"),
+                      BoldHeader(text: "dummy header $index"),
                       ...List.generate(
                         index + 1,
                         (index) => Container(
@@ -100,8 +125,10 @@ class _NotificationPageState extends ConsumerState<NotificationPage> {
                   );
                 },
                 separatorBuilder: (context, index) => const YMargin(10),
-                itemCount: 4),
-          )
+                itemCount: ref.watch(notificationProvider).data.length,
+              ),
+            );
+          })
         ],
       ),
     );
